@@ -11,7 +11,7 @@ export default function App() {
         <footer className="text-center">
           Coded by <a href="https://github.com/MutableSpectre">Stephanie Ratliff-Putney</a>,
           hosted on <a href="https://dictionary-shecodes-project.netlify.app/">Netlify</a>,
-          open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.
+          and open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.
         </footer>
       </div>
     </div>
