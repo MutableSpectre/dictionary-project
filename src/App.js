@@ -10,8 +10,8 @@ export default function App() {
         </header>
         <footer className="text-center">
           Coded by <a href="https://github.com/MutableSpectre">Stephanie Ratliff-Putney</a>,
-          Hosted on <a href="https://dictionary-shecodes-project.netlify.app/">Netlify</a>,
-          Open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.
+          hosted on <a href="https://dictionary-shecodes-project.netlify.app/">Netlify</a>,
+          open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.
         </footer>
       </div>
     </div>
