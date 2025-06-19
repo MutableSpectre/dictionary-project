@@ -9,7 +9,9 @@ export default function App() {
           <img src={logo} className="App-logo img-fluid" alt="logo" />
         </header>
         <footer className="text-center">
-          Coded by Stephanie Ratliff-Putney
+          Coded by <a href="https://github.com/MutableSpectre">Stephanie Ratliff-Putney</a>,
+          Hosted on <a href="https://dictionary-shecodes-project.netlify.app/">Netlify</a>,
+          Open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.
         </footer>
       </div>
     </div>
