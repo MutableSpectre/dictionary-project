@@ -1,23 +1,36 @@
 import logo from "./logo.png";
-import './App.css';
+import "./App.css";
 import Dictionary from "./Dictionary";
 
-export default function App() {
+function App() {
   return (
     <div className="App">
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo img-fluid" alt="logo" />
-        </header>
-        <main>
-          <Dictionary />
-        </main>
-        <footer className="App-footer">
-          <small>Coded by <a href="https://github.com/MutableSpectre">Stephanie Ratliff-Putney</a>,
-          hosted on <a href="https://dictionary-shecodes-project.netlify.app/">Netlify</a>,
-          and open sourced on <a href="https://github.com/MutableSpectre/dictionary-project.git">Github</a>.</small>
-        </footer>
-      </div>
+      <header className="App-header">
+        <img src={logo} className="App-logo img-fluid" alt="SheCodes logo" />
+      </header>
+      <Dictionary defaultkeyword="sunset" />
+      <footer>
+        This project was coded by{" "}
+        <a
+          href="https://www.linkedin.com/in/lenise-m-santana-72b824311/"
+          title="Go to Lenise Linkedin page"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Lenise Moraes
+        </a>{" "}
+        and is open source in{" "}
+        <a
+          href="https://github.com/Lemoraess/dictionary-react"
+          title="Go to github link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
+      </footer>
     </div>
   );
 }
+
+export default App;

@@ -1,36 +1,72 @@
 import React, { useState } from "react";
+import "./Dictionary.css";
 import axios from "axios";
 import Results from "./Results";
-import "./Dictionary.css";
+import Images from "./Images";
 
-export default function Dictionary() {
-    let [keyword, setKeyword] = useState("");
-    let [results, setResults] = useState(null);
+export default function Dictionary(props) {
+  let [keyword, setKeyword] = useState(props.defaultkeyword);
+  let [results, setResults] = useState(null);
+  let [loaded, setLoaded] = useState(false);
+  let [images, setImages] = useState(null);
 
-    function handleResponse(response) {
-        setResults(response.data);
-    }
+  function getResponse(response) {
+    setResults(response.data);
+  }
 
-    function search(event) {
-        event.preventDefault();
-        alert(`Searching for ${keyword} definition`);
-       
-        let apiKey = "40e28c77t4bb5368od54b9ccc0f6fad9"
-        let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
-        axios.get(apiUrl).then(handleResponse);
-    }
+  function getImages(response) {
+    setImages(response.data);
+  }
 
-    function handleKewordChange(event) {
-        setKeyword(event.target.value);
+  function search() {
+    let apiKey = "40e28c77t4bb5368od54b9ccc0f6fad9";
+    let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
+    axios.get(apiUrl).then(getResponse);
 
-    }
+    let imgApiKey = "40e28c77t4bb5368od54b9ccc0f6fad9";
+    let imgApiUrl = `https://api.shecodes.io/images/v1/search?query=${keyword}&key=${imgApiKey}`;
+    axios.get(imgApiUrl).then(getImages);
+  }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function changeKeyword(event) {
+    setKeyword(event.target.value);
+  }
+
+  function load() {
+    setLoaded(true);
+    search();
+  }
+
+  if (loaded) {
     return (
-        <div className="Dictionary">
-            <form onSubmit={search}>
-                <input type="search" onChange={handleKewordChange} autoFocus={true}/>
-            </form>
-            <Results results={results} />
-        </div>
+      <div className="Dictionary">
+        <section>
+          <h1>
+            {" "}
+            <span>My</span> Dictionary
+          </h1>
+          <h3>What word would you like to look up? 🤓 </h3>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              onChange={changeKeyword}
+              className="searchBox"
+              placeholder="Enter a word.."
+            />
+            <input type="submit" className="searchButton" />
+          </form>
+        </section>
+        <Results results={results} />
+        <Images images={images} />
+      </div>
     );
+  } else {
+    load();
+    return "Loading...";
+  }
 }
